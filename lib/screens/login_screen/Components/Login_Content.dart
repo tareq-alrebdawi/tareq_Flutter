@@ -1,66 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutterui/Screens/Login_Screen/Components/bottom_text.dart';
 import 'package:flutterui/Screens/Login_Screen/animations/change_screen_animation.dart';
-import 'package:flutterui/Utils/helpor_functions.dart';
+import 'package:flutterui/Utils/helper_functions.dart';
 import 'package:flutterui/screens/login_screen/Components/Top_text.dart';
 import 'package:ionicons/ionicons.dart';
 
 import '../../../Utils/constants.dart';
 
 enum Screens {
-  creatAccount,
+  createAccount,
   welcomeBack,
 }
 
-class LoginContaint extends StatefulWidget {
-  const LoginContaint({Key? key}) : super(key: key);
+class LoginContent extends StatefulWidget {
+  const LoginContent({Key? key}) : super(key: key);
 
   @override
-  State<LoginContaint> createState() => _LoginContaintState();
+  State<LoginContent> createState() => _LoginContentState();
 }
 
-class _LoginContaintState extends State<LoginContaint>
+class _LoginContentState extends State<LoginContent>
     with TickerProviderStateMixin {
-  late final List<Widget> creatAccountContent;
-  late final List<Widget> loginContaint;
+  late final List<Widget> createAccountContent;
+  late final List<Widget> loginContent;
 
   @override
   void initState() {
-    creatAccountContent = [
+    createAccountContent = [
       inputField('Name', Ionicons.person_outline),
       inputField('E-mail', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed),
-      LoginButtom('Sign Up'),
+      loginButton('Sign Up'),
       orDivider(),
       logos(),
     ];
-    loginContaint = [
+    loginContent = [
       inputField('E-mail', Ionicons.mail_outline),
       inputField('Password', Ionicons.lock_closed),
-      LoginButtom('Log In'),
-      forgotPassord(),
+      loginButton('Log In'),
+      forgotPassword(),
     ];
 
     ChangeScreenAnimation.initialize(
       vsync: this,
-      createAccountItems: creatAccountContent.length,
-      loginItems: loginContaint.length,
+      createAccountItems: createAccountContent.length,
+      loginItems: loginContent.length,
     );
-    for (var i = 0; i < creatAccountContent.length; i++) {
-      creatAccountContent[i] = HeloperFunction.WrapWithAnimatedBuilder(
+    for (var i = 0; i < createAccountContent.length; i++) {
+      createAccountContent[i] = HelperFunction.wrapWithAnimatedBuilder(
         animation: ChangeScreenAnimation.createAccountAnimations[i],
-        child: creatAccountContent[i],
+        child: createAccountContent[i],
       );
     }
 
-    for (var i = 0; i < loginContaint.length; i++) {
-      loginContaint[i] = HeloperFunction.WrapWithAnimatedBuilder(
+    for (var i = 0; i < loginContent.length; i++) {
+      loginContent[i] = HelperFunction.wrapWithAnimatedBuilder(
         animation: ChangeScreenAnimation.loginAnimations[i],
-        child: loginContaint[i],
+        child: loginContent[i],
       );
     }
     super.initState();
-  } //end initState
+  }
 
   @override
   void dispose() {
@@ -68,13 +68,10 @@ class _LoginContaintState extends State<LoginContaint>
     super.dispose();
   }
 
-  //creat Textfeild
+  // Create TextField
   Widget inputField(String hint, IconData iconData) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 36,
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 36, vertical: 8),
       child: SizedBox(
         height: 50,
         child: Material(
@@ -100,25 +97,22 @@ class _LoginContaintState extends State<LoginContaint>
     );
   }
 
-// creat login button method
-  Widget LoginButtom(String title) {
+  // Create login button method
+  Widget loginButton(String title) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 135,
-        vertical: 16,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: const StadiumBorder(),
-         backgroundColor: KSecoundryColor,
+          backgroundColor: KSecondaryColor,
           elevation: 8,
           shadowColor: Colors.black87,
         ),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -127,13 +121,10 @@ class _LoginContaintState extends State<LoginContaint>
     );
   }
 
-//creat line or line
+  // Create orDivider
   Widget orDivider() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 130,
-        vertical: 8,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 130, vertical: 8),
       child: Row(
         children: [
           Flexible(
@@ -143,9 +134,7 @@ class _LoginContaintState extends State<LoginContaint>
             ),
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Text(
               'Or',
               style: TextStyle(
@@ -155,21 +144,20 @@ class _LoginContaintState extends State<LoginContaint>
             ),
           ),
           Flexible(
-              child: Container(
-            height: 1,
-            color: KPrimaryColor,
-          ))
+            child: Container(
+              height: 1,
+              color: KPrimaryColor,
+            ),
+          )
         ],
       ),
     );
   }
 
-//creat logs imames
+  // Create logos
   Widget logos() {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -178,9 +166,7 @@ class _LoginContaintState extends State<LoginContaint>
             width: 30,
             height: 30,
           ),
-          SizedBox(
-            width: 30,
-          ),
+          const SizedBox(width: 30),
           Image.asset(
             'images/google.png',
             width: 30,
@@ -191,79 +177,46 @@ class _LoginContaintState extends State<LoginContaint>
     );
   }
 
-// creat forgotPassword ....
-  Widget forgotPassord() {
+  // Create forgotPassword
+  Widget forgotPassword() {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: 110,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 110),
       child: TextButton(
-          onPressed: () {},
-          child: const Text(
-            'Forget Password',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: KSecoundryColor,
-            ),
-          )),
+        onPressed: () {},
+        child: const Text(
+          'Forgot Password',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: KSecondaryColor,
+          ),
+        ),
+      ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    // const currentScreen = Screens.creatAccount;
     return Stack(
       children: [
         const Positioned(
           top: 136,
           left: 24,
-          // child: TopText( screen: currentScreen), old
           child: TopText(),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 100),
+          padding: const EdgeInsets.only(top: 100),
           child: Stack(
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: creatAccountContent,
-                // children: currentScreen == Screens.creatAccount
-                //     ? [
-                //         inputField('Name', Ionicons.person_outline),
-                //         inputField('E-mail', Ionicons.mail_outline),
-                //         inputField('Password', Ionicons.lock_closed),
-                //         LoginButtom('Sign Up'),
-                //         orDivider(),
-                //         logos(),
-                //       ]
-                //     : [
-                //         inputField('E-mail', Ionicons.mail_outline),
-                //         inputField('Password', Ionicons.lock_closed),
-                //         LoginButtom('Log In'),
-                //         forgotPassord(),
-                //       ],
+                children: createAccountContent,
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: loginContaint,
-                // children: currentScreen == Screens.creatAccount
-                //     ? [
-                //         inputField('Name', Ionicons.person_outline),
-                //         inputField('E-mail', Ionicons.mail_outline),
-                //         inputField('Password', Ionicons.lock_closed),
-                //         LoginButtom('Sign Up'),
-                //         orDivider(),
-                //         logos(),
-                //       ]
-                //     : [
-                //         inputField('E-mail', Ionicons.mail_outline),
-                //         inputField('Password', Ionicons.lock_closed),
-                //         LoginButtom('Log In'),
-                //         forgotPassord(),
-                //       ],
+                children: loginContent,
               ),
             ],
           ),
@@ -271,13 +224,10 @@ class _LoginContaintState extends State<LoginContaint>
         const Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: EdgeInsets.only(
-              bottom: 50,
-            ),
+            padding: EdgeInsets.only(bottom: 50),
             child: BottomText(),
-            // child: BottomText(screen:currentScreen ),
           ),
-        )
+        ),
       ],
     );
   }
