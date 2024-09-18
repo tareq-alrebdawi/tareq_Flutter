@@ -112,7 +112,7 @@ class _LoginContaintState extends State<LoginContaint>
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),
           shape: const StadiumBorder(),
-          primary: KSecoundryColor,
+         backgroundColor: KSecoundryColor,
           elevation: 8,
           shadowColor: Colors.black87,
         ),
