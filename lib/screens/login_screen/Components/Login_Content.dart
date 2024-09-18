@@ -98,28 +98,28 @@ class _LoginContentState extends State<LoginContent>
   }
 
   // Create login button method
-  Widget loginButton(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
-      child: ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          shape: const StadiumBorder(),
-          backgroundColor: KSecondaryColor,
-          elevation: 8,
-          shadowColor: Colors.black87,
-        ),
-        child: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget loginButton(String title) {
+  //   return Padding(
+  //     padding: const EdgeInsets.symmetric(horizontal: 135, vertical: 16),
+  //     child: ElevatedButton(
+  //       onPressed: () {},
+  //       style: ElevatedButton.styleFrom(
+  //         padding: const EdgeInsets.symmetric(vertical: 14),
+  //         shape: const StadiumBorder(),
+  //         backgroundColor: KSecondaryColor,
+  //         elevation: 8,
+  //         shadowColor: Colors.black87,
+  //       ),
+  //       child: Text(
+  //         title,
+  //         style: const TextStyle(
+  //           fontSize: 18,
+  //           fontWeight: FontWeight.bold,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   // Create orDivider
   Widget orDivider() {
